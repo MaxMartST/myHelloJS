@@ -1,30 +1,6 @@
-/* Задание на урок:
-
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
-
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
-
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
-    }
-
-Проверить, чтобы все работало без ошибок в консоли */
-
 'use strict';
 //1
 const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "0");
-
 //2
 const personalMovieDB = {
     count: numberOfFilms,
@@ -33,14 +9,32 @@ const personalMovieDB = {
     genres: [],
     privat: false
 };
-
 //3
-const a = prompt("Один из последних просмотренных фильмов?", "");
-const b = +prompt("На сколько оцените его?", "0");
-const c = prompt("Один из последних просмотренных фильмов?", "");
-const d = +prompt("На сколько оцените его?", "0");
+let count = 0,
+    sizeTitle = 50;
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+while(count != personalMovieDB.count)
+{
+    const a = prompt("Один из последних просмотренных фильмов?", "");
+    const b = +prompt("На сколько оцените его?", "0");
+
+    if ((a.length > sizeTitle) || (a.length === 0) || (isNaN(b)))
+    {
+        alert("Invalid argument!");
+    } 
+    else
+    {
+        personalMovieDB.movies[a] = b;
+        count++;
+    }
+}
+
+// const a = prompt("Один из последних просмотренных фильмов?", "");
+// const b = +prompt("На сколько оцените его?", "0");
+// const c = prompt("Один из последних просмотренных фильмов?", "");
+// const d = +prompt("На сколько оцените его?", "0");
+
+// personalMovieDB.movies[a] = b;
+// personalMovieDB.movies[c] = d;
 
 console.log(personalMovieDB);
