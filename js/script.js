@@ -10,19 +10,18 @@ const personalMovieDB = {
     privat: false
 };
 
-let count = 0,
-    sizeTitle = 50;
+let sizeTitle = 50;
 
-while(count != personalMovieDB.count) {
+for (let i = 0; i < 2; i++){
     const a = prompt("Один из последних просмотренных фильмов?", ""),
           b = +prompt("На сколько оцените его?", "0");
 
-    if ((a.length > sizeTitle) || (a.length === 0) || (isNaN(b))) {
-        alert("Invalid argument!");
-    } 
-    else {
+    if (a != null && a != '' && b != null && b != '' && a.length > 50 && !isNaN(b)) {
         personalMovieDB.movies[a] = b;
-        count++;
+        console.log("done");
+    } else {
+        console.log("Invalid argument!");
+        i--;
     }
 }
 
